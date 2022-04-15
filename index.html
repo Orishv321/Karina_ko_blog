@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karina ko blog</title>
+
+</head>
+
+<body>
+
+    <!-- add to blogs  -->
+    <section>
+        <div><label for="add_title"> Title </label><input type="text" name="title" onchange="addInBlog()" id="add_title"
+                class="blog-add" />
+        </div>
+        <div><label for="add_dec">Details</label><input type="text" name="description" onchange="addInBlog()"
+                id="add_dec" class="blog-add" />
+        </div>
+        <div><button onclick="submitBlog()">Submit</button></div>
+        <!-- <div><label for=""></label><input type="text" name="" id="" class="blog-add" /></div> -->
+
+    </section>
+    <!-- display blogs -->
+    <section>
+        <div class="display-blog">
+            <div class="load-wrapp">
+                <div class="load-2">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+<script>
+
+
+    const blogInterface = {
+        title: '',
+        description: '',
+        deleteState: false,
+        like: 0,
+        comment: []
+    };
+    let blog = { ...blogInterface };
+    let blogs = [];
+    let add_title = document.querySelector('#add_title');
+    let add_dec = document.querySelector('#add_dec');
+    let display_blog = document.querySelector('.display-blog');
+
+    // loadBlogs();
+    function loadBlogs() {
+        try {
+            display_blog.innerHTML = '';
+            blogs.forEach(data => {
+                display_blog.innerHTML += `<div><div>${data.title}</div><div>${data.description}</div></div>`
+            });
+        } catch (error) {
+            console.error(">>>Error>>", error);
+        }
+    }
+
+    function resetForm() {
+        try {
+            blog = { ...blogInterface };
+            add_title.value = '';
+            add_dec.value = '';
+            add_title.focus();
+        } catch (error) {
+            console.error(">>>Error>>", error);
+        }
+
+    }
+
+    function addInBlog() {
+        try {
+            blog[event.target.name] = event.target.value;
+        } catch (error) {
+            console.error(">>>Error>>", error);
+        }
+    }
+    function submitBlog() {
+        try {
+            event.preventDefault();
+            if (!blog.title) { alert('Title is required'); return 0; }
+            if (!blog.description) { alert('Description is required'); return 0; }
+            blogs.push(blog);
+            loadBlogs();
+            resetForm();
+        } catch (error) {
+            console.error(">>>Error>>", error);
+        }
+
+    }
+    // .load-wrapp
+</script>
+
+<style>
+    /* -----------------------------------------
+  =Default css to make the demo more pretty
+-------------------------------------------- */
+
+
+    .load-wrapp {
+        float: left;
+        width: 100px;
+        height: 100px;
+        margin: 0 10px 10px 0;
+        padding: 20px 20px 20px;
+        border-radius: 5px;
+        text-align: center;
+
+    }
+
+    .load-wrapp p {
+        padding: 0 0 20px;
+    }
+
+    .load-wrapp:last-child {
+        margin-right: 0;
+    }
+
+    .line {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        background-color: #4b9cdb;
+    }
+
+
+
+
+
+    .load-2 .line:nth-last-child(1) {
+        animation: loadingB 1.5s 1s infinite;
+    }
+
+    .load-2 .line:nth-last-child(2) {
+        animation: loadingB 1.5s 0.5s infinite;
+    }
+
+    .load-2 .line:nth-last-child(3) {
+        animation: loadingB 1.5s 0s infinite;
+    }
+
+
+
+    @keyframes loadingB {
+        0 {
+            width: 15px;
+        }
+
+        50% {
+            width: 35px;
+        }
+
+        100% {
+            width: 15px;
+        }
+    }
+</style>
+
+</html>
