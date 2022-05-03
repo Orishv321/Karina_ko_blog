@@ -23,6 +23,10 @@
         <!-- <div><label for=""></label><input type="text" name="" id="" class="blog-add" /></div> -->
 
     </section>
+
+    <section id="formFromJS">
+
+    </section>
     <!-- display blogs -->
     <section>
         <div class="display-blog">
@@ -40,6 +44,30 @@
 </body>
 <script>
 
+    // const formArray = [
+    //     "title",
+    //     'phone_number',
+    //     "description"
+    // ]
+
+    // const makeForm = [
+    //     { label: "Title", name: 'title', id: "title", type: 'text' },
+    //     { label: "PhoneNumber", name: 'phoneNumber', id: "phoneNumber", type: 'number' },
+    //     { label: "Description", name: 'description', id: "description", type: 'text' }
+    // ];
+
+    // function buildForm() {
+    //     let formFromJS = document.querySelector("#formFromJS");
+    //     formFromJS.innerHTML = "";
+    //     makeForm.forEach((val, key) => {
+    //         formFromJS.innerHTML += `
+    //         <div><label> ${val.label} </label><input type="${val.type}" name="${val.name}" onchange="addInBlog()" id="${val.id}"
+    //             class="red" />
+    //     </div>
+    //         `
+    //     });
+    // }
+    // buildForm();
 
     const blogInterface = {
         title: '',
@@ -105,7 +133,9 @@
     /* -----------------------------------------
   =Default css to make the demo more pretty
 -------------------------------------------- */
-
+    .red {
+        color: red;
+    }
 
     .load-wrapp {
         float: left;
@@ -168,3 +198,13 @@
 </style>
 
 </html>
+
+
+<!-- Hw >>>> have to do it :) 
+    map();
+    filter();
+    includes();
+    foreach(); and map();
+    object.keys();
+    object.values();
+-->
